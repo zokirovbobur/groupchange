@@ -1,5 +1,6 @@
 package bbro.groupchangeiut.student;
 
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ public class StudentController {
 
     @GetMapping("all")
     public List<Student> getAllStudent(){
+        System.out.println("getAll");
         return service.getAllStudents();
     }
 
@@ -23,8 +25,10 @@ public class StudentController {
     }
 
     @PostMapping
-    public boolean postStudent(@RequestBody Student student){
-        return service.postStudent(student);
+    public boolean postStudent(@RequestBody Student student[]){
+        System.out.println(student[0].toString());
+        System.out.println("post");
+        return service.postStudent(student[0]);
     }
 
     @PutMapping
